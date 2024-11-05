@@ -15,9 +15,8 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
 });
-
-// Serve static files from the "public" folder
-app.use(express.static('public'));
+// Serve static files from the root directory
+app.use(express.static('.'));  // Change 'public' to '.' to serve from the root
 
 // Fetch data from API and store in database
 async function fetchAndStoreData() {
