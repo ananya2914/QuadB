@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HodlInfo Clone</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">HODLINFO</div>
+        <div class="stats">
+            <span>0.1%<br>5 Mins</span>
+            <span>0.96%<br>1 Hour</span>
+            <span class="big-price">₹ 26,56,110</span>
+            <span>2.73%<br>1 Day</span>
+            <span>7.51%<br>7 Days</span>
+        </div>
+        <div class="buttons">
+            <button>INR</button>
+            <button>BTC</button>
+            <button>BUY BTC</button>
+            <button>Connect Telegram</button>
+        </div>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Platform</th>
+                <th>Last Traded Price</th>
+                <th>Buy / Sell Price</th>
+                <th>Difference</th>
+                <th>Savings</th>
+            </tr>
+        </thead>
+        <tbody id="crypto-data">
+            <!-- Data rows will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        async function loadData() {
+            const response = await fetch('/api/tickers');
+            const data = await response.json();
+            const tableBody = document.getElementById('crypto-data');
+
+            data.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${item.name}</td>
+                    <td>₹ ${item.last}</td>
+                    <td>₹ ${item.buy} / ₹ ${item.sell}</td>
+                    <td>${((item.sell - item.buy) / item.buy * 100).toFixed(2)} %</td>
+                    <td>₹ ${(item.sell - item.buy).toFixed(2)}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        loadData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+/* styles.css */
+body {
+    background-color: #090215;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #53b3a6;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    color: #53b3a6;
+}
+
+.big-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.buttons button {
+    background-color: #3b3b3b;
+    color: #53b3a6;
+    border: none;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 16px;
+    text-align: center;
+}
+tbody tr:nth-child(odd) {
+    background-color: #342f44;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #342f44;
+}
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-spacing: 0 10px; /* Vertical spacing between rows */
+    border-collapse: separate; /* Ensure border-spacing works */
+}
